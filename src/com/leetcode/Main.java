@@ -1,7 +1,12 @@
 package com.leetcode;
 
 import com.leetcode.Arrays.*;
+import com.leetcode.Strings.Anagram;
+import com.leetcode.Strings.FirstUniqueCharacter;
+import com.leetcode.Strings.ReverseInteger;
+import com.leetcode.Strings.ReverseString;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Main {
@@ -95,6 +100,68 @@ public class Main {
 
       System.out.println("The Input Array : "+Arrays.toString(sumArray1) +" , Target : 18 , Output Sum Array Positions : "+Arrays.toString(result1));
         System.out.println("The Input Array : "+Arrays.toString(sumArray2) +" , Target : 7 , Output Sum Array Positions : "+Arrays.toString(result2));
+
+    // Invoke Sudoku Class
+
+        char[][] board =
+                {{'5','3','.','.','7','.','.','.','.'}
+                        ,{'6','.','.','1','9','5','.','.','.'}
+                        ,{'.','9','8','.','.','.','.','6','.'}
+                        ,{'8','.','.','.','6','.','.','.','3'}
+                        ,{'4','.','.','8','.','3','.','.','1'}
+                        ,{'7','.','.','.','2','.','.','.','6'}
+                        ,{'.','6','.','.','.','.','2','8','.'}
+                        ,{'.','.','.','4','1','9','.','.','5'}
+                        ,{'.','.','.','.','8','.','.','7','9'}};
+
+        ValidSudoku sudoku = new ValidSudoku();
+        System.out.println("The given Sudo board "+ Arrays.toString(board) +" is "+ sudoku.isValidSudoku(board));
+
+        //Invoke RotateImage;
+
+        int[][] matrix = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
+
+        RotateImage rotateImage = new RotateImage();
+        rotateImage.rotateImage(matrix);
+
+
+        /*********************************************************************************************************************************
+         * Strings
+         *
+         */
+
+        //Invoke ReverseString Class
+
+        ReverseString reverse = new ReverseString();
+        char[] s={'h','e','l','l','o'};
+        System.out.println("The Original Char Array is "+ Arrays.toString(s));
+        System.out.println("The reversed string is "+ Arrays.toString(reverse.reverseString(s)));
+
+        // Invoke ReverseInteger Class
+
+        ReverseInteger reverseInteger = new ReverseInteger();
+        int x=123;
+        System.out.println("The Original Integer is " +x);
+        System.out.println("The Reversed Integer is "+ reverseInteger.reverseInt(x));
+
+        //Invoke FirstUniqueCharacter Class
+
+        String str="leetcode";
+        String str2="loveleetcode";
+        FirstUniqueCharacter uniqueCharacter = new FirstUniqueCharacter();
+        System.out.println("The first unique character in the string "+str+ " is "+uniqueCharacter.findFirstUniqueCharacter(str));
+        System.out.println("The first unique character in the string "+str2+ " is "+uniqueCharacter.findFirstUniqueCharacter(str2));
+
+        //Invoke Anagram
+
+        String st= "anagram";
+        String t="nagaram";
+        Anagram anagram = new Anagram();
+        System.out.println(" Are the strings '"+ st +"' , '"+t +"' anagrams ?" + anagram.isAnagram(st, t));
+        st="cat";
+        t="rat";
+        System.out.println(" Are the strings '"+ st +"' , '"+t +"' anagrams ?" + anagram.isAnagram(st, t));
+
 
 
     }
