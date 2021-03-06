@@ -1,13 +1,27 @@
 package com.leetcode;
 
 import com.leetcode.Arrays.*;
-import com.leetcode.Strings.Anagram;
-import com.leetcode.Strings.FirstUniqueCharacter;
-import com.leetcode.Strings.ReverseInteger;
-import com.leetcode.Strings.ReverseString;
+import com.leetcode.Deque.CircularDeque;
+import com.leetcode.Graph.BFSUsingLinkedList;
+import com.leetcode.Graph.DFSGraph;
+import com.leetcode.Graph.GraphImplementationUsingAdjacencyList;
+import com.leetcode.Graph.GraphImplementationUsingLinkedList;
+import com.leetcode.Queue.ImplementQueueUsingArray;
+import com.leetcode.Sorting.BubbleSort;
+import com.leetcode.Sorting.MergeSort;
+import com.leetcode.Sorting.QuickSort;
+import com.leetcode.Stack.StackImplemenationUsingArray;
+import com.leetcode.Stack.StackImplementationUsingArrayList;
+import com.leetcode.Strings.*;
+import com.leetcode.Tree.*;
+import com.leetcode.list.LinkedList;
+import com.leetcode.list.Node;
+import com.leetcode.trie.Trie;
+import com.sun.source.tree.Tree;
 
-import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -162,7 +176,236 @@ public class Main {
         t="rat";
         System.out.println(" Are the strings '"+ st +"' , '"+t +"' anagrams ?" + anagram.isAnagram(st, t));
 
+        //Invoke Trie Insert , Search and SEarchPrefix function;
 
+        Trie trie = new Trie();
+        trie.insert("apple");
+        trie.insert("approve");
+        trie.insert("air");
+        trie.insert("bee");
+        System.out.println(" The trie has the word bee : "+trie.search("bee") );
+        System.out.println(" The trie has the word air : "+trie.search("air") );
+        System.out.println(" The trie has the word approve : "+trie.search("approve") );
+        System.out.println(" The trie has the word airstrike : "+trie.search("airstrike") );
+        System.out.println(" The trie has the prefix bee : "+trie.searchPrefix("bee") );
+        System.out.println(" The trie has the prefix ai : "+trie.searchPrefix("ai") );
+        System.out.println(" The trie has the prefix approe : "+trie.searchPrefix("approe") );
+        System.out.println(" The trie has the prefix airstrike : "+trie.searchPrefix("airstrike") );
+
+
+        ///Invoke Reverse the LinkedList
+
+        LinkedList list = new LinkedList();
+        list.insertLinkedList(list,1);
+        list.insertLinkedList(list,2);
+        list.insertLinkedList(list,3);
+        list.insertLinkedList(list,4);
+        list.insertLinkedList(list,5);
+
+
+         Node newHead=   list.reverseListRecursion(list.head);
+        System.out.println("The reversed LinkedList is ");
+        list.printLinkedList(newHead);
+
+
+        Node node = list.reverseListIteration(newHead);
+        System.out.println("The reversed LinkedList is ");
+        list.printLinkedList(node);
+
+        //Stack Implementation Using ArrayList
+
+        StackImplementationUsingArrayList stack = new StackImplementationUsingArrayList(5);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        System.out.println(" ******** Stack After Pushing elements to it ********");
+        stack.printStack();
+        stack.pop();
+        System.out.println(" ******** Stack After Popping elements to it ********");
+        stack.printStack();
+        System.out.println(" ******** Stack After Incrementing elements to it ********");
+        stack.increment(1,100);
+        stack.printStack();
+
+
+        //Print Permutation of the String
+
+        PermutationsOfString permutationsOfString = new PermutationsOfString();
+        permutationsOfString.permutation("abcd");
+        permutationsOfString.permutationWithoutDuplicates("abb");
+
+        //ClimbStairs Problem
+
+        ClimbStairs climbStairs = new ClimbStairs();
+        System.out.println("The number of ways to climb stepsCount of 5 is "+ climbStairs.climbStairs(5));
+
+
+        //CircularDeque
+        CircularDeque deque = new CircularDeque(5);
+        System.out.println(" deque.insertFront(0) : "+ deque.insertFront(0));
+        System.out.println(" deque.insertLast(3) : "+  deque.insertLast(3));
+        System.out.println(" deque.insertFront(1) : "+deque.insertFront(1));
+        System.out.println(" deque.insertLast(4) : "+deque.insertLast(4));
+        System.out.println(" deque.insertFront(2) : "+deque.insertFront(2));
+        System.out.println(" deque.insertLast(7) : "+deque.insertLast(7));
+        System.out.println(" deque.insertFront(7) : "+deque.insertFront(7));
+        System.out.println(" deque.deleteFront() : "+ deque.deleteFront());
+        System.out.println(" deque.deleteLast() : "+deque.deleteLast());
+        System.out.println(" deque.getFront() : "+ deque.getFront());
+        System.out.println(" deque.getLast() : "+deque.getLast());
+
+
+        //ValidateBinarySearchTree
+        TreeNode root = new TreeNode(0);
+        TreeNode left1= new TreeNode(-3) ;
+        TreeNode right1 = new TreeNode(9);
+        TreeNode left2= new TreeNode(-10) ;
+        TreeNode left3  = new TreeNode( 5);
+        TreeNode right2 = new TreeNode(12);
+       root.left = left1;
+       root.right= right1;
+       root.left.left = left2;
+       root.right.left = left3;
+       root.right.right = right2;
+
+        ValidateBinarySearchTree bst = new ValidateBinarySearchTree();
+        System.out.println("This is a valid BST : "+ bst.isValidBST(root));
+
+
+        //SortedARraytoBST
+
+        ImplementBST sortedArraytoBST = new ImplementBST();
+        System.out.println(" The SortedArray to BST output is "+sortedArraytoBST.sortedArraytoBST(array));
+
+        //InorderTraversal
+
+        InOrderTraversal inOrderTraversal = new InOrderTraversal();
+        List<Integer> list1 = inOrderTraversal.inOrderTraversalRecursion(root);
+        System.out.println(" The List returned after the inorderTraversal of BST using Recursion :");
+        for(Integer temp : list1){
+            System.out.println(temp);
+        }
+        List<Integer> list2= inOrderTraversal.inOrderTraversalIteration(root);
+        System.out.println(" The List returned after the inorderTraversal of BST using Iteration :");
+        for(Integer temp : list2){
+            System.out.println(temp);
+        }
+
+        //MinDepth of BST
+
+        MinDepthOfBST minDepthOfBST = new MinDepthOfBST();
+        System.out.println("The minimum depth of the BST is : "+minDepthOfBST.findMinDepthOfBST(root));
+
+        //MaxDepthOfBST
+        MaxDepthOfBST maxDepthOfBST= new MaxDepthOfBST();
+        System.out.println(" The Maximum depth of the BST is : "+maxDepthOfBST.findMaxDepthOfBST(root));
+
+
+        //Implementation of Queue using Array
+        ImplementQueueUsingArray implementQueueUsingArray = new ImplementQueueUsingArray(5);
+        implementQueueUsingArray.display();
+        implementQueueUsingArray.enQueue(5);
+        implementQueueUsingArray.enQueue(10);
+        implementQueueUsingArray.enQueue(15);
+        implementQueueUsingArray.display();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.enQueue(20);
+        implementQueueUsingArray.display();
+        implementQueueUsingArray.enQueue(25);
+        implementQueueUsingArray.enQueue(30);
+         implementQueueUsingArray.enQueue(35);
+        implementQueueUsingArray.display();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.queueDeque();
+        implementQueueUsingArray.enQueue(40);
+
+        //Stack Implementation Using Array
+
+        StackImplemenationUsingArray stackImplemenationUsingArray = new StackImplemenationUsingArray(5);
+        stackImplemenationUsingArray.push(10);
+        stackImplemenationUsingArray.push(20);
+        stackImplemenationUsingArray.push(30);
+        stackImplemenationUsingArray.push(40);
+        stackImplemenationUsingArray.push(50);
+        stackImplemenationUsingArray.push(60);
+        stackImplemenationUsingArray.pop();
+        System.out.println(stackImplemenationUsingArray.peek());
+
+        //HouseRobber
+
+        HouseRobber houseRobber = new HouseRobber();
+        int[] houseNums={2,7,9,3,1};
+        System.out.println("The houseRobber output : "+houseRobber.rob(houseNums));
+
+        //LongestPalindromicSubstring
+
+        LongestPalindrome longestPalindrome = new LongestPalindrome();
+        longestPalindrome.longestPalindrome("babac");
+
+        //BubbleSort
+
+        BubbleSort bubbleSort = new BubbleSort();
+        int[] numberArray= {5,4,3,1,2};
+
+//        System.out.println("The Sorted Array : "+ Arrays.toString(bubbleSort.bubbleSortingImplementation(numberArray)));
+//
+//        //QuickSortImplementation
+//
+//        QuickSort quickSort = new QuickSort(numberArray);
+//        System.out.println("The Quick Sort Implemented Array is " + Arrays.toString(quickSort.quickSortImplementation(numberArray,0,numberArray.length-1)));
+//
+        //MergeSort
+
+        MergeSort mergeSort = new MergeSort();
+        mergeSort.sort(numberArray,0,numberArray.length-1);
+        System.out.println(" The Merge Sorted Array is "+Arrays.toString(numberArray));
+
+
+        // Creating a graph with 5 vertices using ArrayList
+        int V = 5;
+        ArrayList<ArrayList<Integer>> adj
+                = new ArrayList<ArrayList<Integer> >(V);
+
+        for (int i = 0; i < V; i++)
+            adj.add(new ArrayList<Integer>());
+
+        GraphImplementationUsingAdjacencyList graphObj = new GraphImplementationUsingAdjacencyList();
+        // Adding edges one by one
+        graphObj.addEdge(adj, 0, 1);
+        graphObj.addEdge(adj, 0, 4);
+        graphObj.addEdge(adj, 1, 2);
+        graphObj.addEdge(adj, 1, 3);
+        graphObj.addEdge(adj, 1, 4);
+        graphObj.addEdge(adj, 2, 3);
+        graphObj.addEdge(adj, 3, 4);
+
+        graphObj.printGraph(adj);
+
+
+        //Creating a graph objevt using LinkedList
+
+        GraphImplementationUsingLinkedList g = new GraphImplementationUsingLinkedList(5);
+
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+
+
+        BFSUsingLinkedList bfs= new BFSUsingLinkedList();
+        bfs.BFS(2,g.adj);
+
+        DFSGraph dfs= new DFSGraph();
+        dfs.DFS(g.adj,2);
 
     }
+
+
+
 }
